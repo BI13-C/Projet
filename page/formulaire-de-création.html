@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+     <meta charset="UTF-8"> <!-- meta charset : permet d'utiliser les accents, caractères spéciaux -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création d'un Profil</title>
+    <link rel="stylesheet" href="Style1.css">
+</head>
+<body class="body2">
+
+    <h1>Créee ton profil</h1>
+
+    <form id="profileForm"> <!-- Cette balise contient un formulaire, c’est-à-dire un ensemble de champs que l’utilisateur peut remplir (texte, email, mot de passe, sélection, etc.) et envoyer. -->
+    <label for="accountType">Type de profil :</label> <!-- label : permet de cliquer sur le texte pour activer le champ associé. -->
+    <select id="accountType" required> <!-- Select : C’est une liste déroulante (comme un menu), utilisée pour choisir une option parmi plusieurs. -->
+      <option value="" disabled selected>Choisissez...</option> <!-- Les "option" sont les choix possibles dans un menu "select" L’attribut value est la valeur qui sera envoyée (en JavaScript ou vers un serveur) quand l’utilisateur choisit cette option. --> -->
+      <option value="client">Client</option>
+      <option value="vendeur">Vendeur en ligne</option>
+    </select>
+
+    <label for="name">Nom du compte :</label>
+    <input type="text" id="name" placeholder="Ex : utilisateur00012" required>
+
+    <label for="profilePic">Photo de profil :</label>
+    <input type="file" id="profilePic" accept="image/*">
+
+    <label for="description">Description :</label>
+    <textarea id="description" placeholder="Décrivez-vous ici..." rows="3"></textarea> <!-- textarea : C’est une zone de texte multiligne, pour écrire un texte plus long (par exemple une biographie, un message, etc.) -->
+    <!-- rows : attribut de la balise "textarea" qui définit combien de lignes (en hauteur) on voit dans la zone de texte. -->
+
+
+    <!-- Seulement le vendeur -->
+    <div class="vendeur-only" id="vendeurFields">
+      <label for="entite">Nom de l'entité :</label>
+      <input type="text" id="entite" placeholder="Nom de l'entreprise">
+    </div>
+
+    <button type="submit">Valider</button>
+  </form>
+
+  <script src="java.js"></script>
+
+
+</body>
+</html>

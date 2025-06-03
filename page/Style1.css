@@ -153,3 +153,65 @@ body{
 
 
 }
+
+
+
+
+
+.body2 {
+  background: linear-gradient(#f9cbd6, #f2afbc, #f2e0d2) ;
+  color: #fff;
+  font-family: Brown sugar;
+  padding: 20px;
+  max-width: 500px;
+  margin: auto;
+  font-style: italic;
+}
+
+h1 {
+  text-align: center;
+  font-style:italic;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #fee3e8;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+label {
+  font-weight: bold;
+  color: #f5cac3;
+}
+
+input,
+textarea,
+select {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1em;
+}
+
+button {
+  padding: 12px;
+  background-color: #ff0055;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.vendeur-only {
+  display: none;
+}
+
+#description{
+    color: #f5cac3;
+}
