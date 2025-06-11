@@ -1,18 +1,30 @@
-.body3{
+body {
     margin: 0;
-    padding: 10px;
-    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
     background: linear-gradient(#eeaac3, #f1dfdd);
-    display:flex;
+    background-attachment: fixed;
+    font-family: 'Brown Sugar', cursive;
+    color: #9b5372;
+}
+
+.body3 {
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-family: Brown sugar;
-    width: 106%;
-    flex-direction: column ;
-    color:#9b5372 ;
-    
-
+    flex-direction: column;
+    color: #9b5372;
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-height: 100vh;
+    width: 100%;
+    font-family: 'Brown Sugar', cursive;
 }
+
+
+
+
+
 .h2{
     font-style: italic;
     color: #9b5372;
@@ -30,6 +42,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 6px;
+    border: 1px solid #ccc;
 }
 
 label{
