@@ -26,3 +26,8 @@ document.getElementById('profileForm').addEventListener('submit', function (e) {
   // Ici tu peux enregistrer les données ou les envoyer vers un backend
 });
 
+
+
+
+
+
