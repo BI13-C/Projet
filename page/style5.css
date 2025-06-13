@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 10px;
     min-height: 100vh;
-    background-color: whitesmoke;
+    background-color: rgb(233, 169, 189);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -20,10 +20,10 @@ h2 {
 }
 
 .container {
-    width: 350px;
+    width: 390px;
     min-height: 100px;
     margin: auto;
-    border: 3px solid #ccc;
+    border: 3px solid pink;
     padding: 20px;
     background-color: white;
     color: black;
@@ -31,7 +31,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 20px 18px rgba(0, 0, 0.2, 0.15);
+    box-shadow: 0 20px 18px pink;
     text-align: center;
 }
 
@@ -52,25 +52,15 @@ h2 {
 .form2 input[type="password"] {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid pink;
     border-radius: 8px;
     width: 220px;
     margin-bottom: 8px;
+
 }
 
-#mot-de-passe {
-    margin-right: 8px;
-}
 
-.form2 button[type="button"] {
-    background-color: #eee;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 13px;
-    cursor: pointer;
-    margin-left: 4px;
-}
+
 
 .form2 .remember {
     display: flex;
@@ -78,23 +68,11 @@ h2 {
     font-size: 13px;
     margin-top: 4px;
     color: palevioletred;
+
 }
 
-.separator {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
-    column-gap: 18px;
-    font-size: 14px;
-}
-.separator span:nth-child(1),
-.separator span:nth-child(3) {
-    width: 100%;
-    height: 1px;
-    background: #ccc;
-    display: block;
-}
+
+
 
 .forgot-button {
     display: flex;
@@ -107,7 +85,7 @@ h2 {
     background: none;
     border: 0;
     font-size: 12px;
-    color: #3c4047;
+    color: palevioletred;
     display: flex;
     align-items: center;
     column-gap: 8px;
@@ -123,7 +101,7 @@ h2 {
 }
 
 .Inscrivez-vous {
-    border: 1px solid #bbbaba;
+    border: 1px solid pink;
     padding: 10px 60px;
     margin-top: 16px;
     font-size: 14px;
@@ -138,4 +116,16 @@ h2 {
 .Inscrivez-vous p {
     font-size: 14px;
     color: black;
+}
+
+
+.submit-button {
+    background-color: palevioletred;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 10px;
 }
