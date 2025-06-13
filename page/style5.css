@@ -12,11 +12,13 @@ body {
 
 h1 {
     font-size: 20px;
-    color: palevioletred;
+    color: rgb(199, 82, 121);
+    margin-bottom: 8px; 
 }
 h2 {
     font-size: 16px;
     color: palevioletred;
+    margin-top: 0;
 }
 
 .container {
