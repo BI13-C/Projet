@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Création d'un Profil</title>
+    <link rel="stylesheet" href="Style1.css">
+</head>
+<body class="body2">
+
+    <h1>Créee ton profil !</h1>
+
+    <form id="profileForm" action="actions/utilisateur.php" method="POST" enctype="multipart/form-data">
+        <label for="accountType">Type de profil :</label>
+        <select id="accountType" name="accountType" required>
+            <option value="" disabled selected>Choisissez...</option>
+            <option value="client">Client</option>
+            <option value="vendeur">Vendeur en ligne</option>
+        </select>
+
+        <label for="name">Nom du compte :</label>
+        <input type="text" id="name" name="username" placeholder="Ex : utilisateur00012" required>
+
+        <label for="profilePic">Photo de profil :</label>
+        <input type="file" id="profilePic" name="profilePic" accept="image/*">
+
+        <label for="description">Description :</label>
+        <textarea id="description" name="description" placeholder="Décrivez-vous ici..." rows="3"></textarea>
+
+        <div class="vendeur-only" id="vendeurFields" style="display:none;">
+            <label for="entite">Nom de l'entité :</label>
+            <input type="text" id="entite" name="entite" placeholder="Nom de l'entreprise">
+        </div>
+
+        <button type="submit">Valider</button>
+    </form>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const accountType = document.getElementById('accountType');
+        const vendeurFields = document.getElementById('vendeurFields');
+
+        function toggleVendeurFields() {
+            if (accountType.value === 'vendeur') {
+                vendeurFields.style.display = 'block';
+            } else {
+                vendeurFields.style.display = 'none';
+                document.getElementById('entite').value = '';
+            }
+        }
+
+        accountType.addEventListener('change', toggleVendeurFields);
+        toggleVendeurFields();
+    });
+    </script>
+
+</body>
+</html>
+
