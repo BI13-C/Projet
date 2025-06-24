@@ -36,6 +36,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!$conn) {
             echo "<p style='color:red;'>Erreur de connexion à la base de données.</p>";
         } else {
+               // Vérifier si le nom d'utilisateur existe déjà
+            $checkSql = "SELECT COUNT(*) FROM user WHERE nom_utilisateur = ?";
+            $checkStmt = mysqli_prepare($conn, $checkSql);
+            mysqli_stmt_bind_param($checkStmt, "s", $username);
+            mysqli_stmt_execute($checkStmt);
+            mysqli_stmt_bind_result($checkStmt, $count);
+            mysqli_stmt_fetch($checkStmt);
+            mysqli_stmt_close($checkStmt);
+
+            if ($count > 0) {
+                echo "<p style='color:pink;'>❌ Ce nom d'utilisateur est déjà pris.</p>";
+            } else {
             // Insertion dans la base
             $sql = "INSERT INTO user (type_compte, nom_utilisateur, photo_profil, description, entite) 
                     VALUES (?, ?, ?, ?, ?)";
@@ -56,6 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
+}
 }
 ?>
 

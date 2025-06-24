@@ -1,2 +1,193 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #fafafa;
+    margin: 0;
+    padding: 0;
+}
 
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    border-radius: 8px;
+    padding: 40px;
+    width: 650px;
+    min-height: 800px;
+    border: 3px solid pink;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    box-shadow: 0 20px 18px pink;
+    text-align: center;
+}
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 32px;
+    align-items: center;
+    
+}
+
+.profile-picture {
+    margin-left: 0;
+    display: flex;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+.profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 6px solid pink;
+    object-fit: cover;
+}
+
+.profile-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.username {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+}
+
+.stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    justify-content: center;
+    margin: 8px 0 0 0;
+    text-align: left;
+    width: 100%;
+    align-self: flex-start;
+    padding-left: 13px;
+}
+
+.full-name {
+    
+}
+
+.bio {
+    margin: 0 0 8px 0;
+    color: #555;
+}
+    
+.full-name{
+    margin: 8px 0 0 0;
+    text-align: left;
+    width: 100%;
+    align-self: flex-start;
+    padding-left: 24px;
+}
+
+.bio {
+    margin: 8px 0 0 0;
+    text-align: left;
+    width: 100%;
+    align-self: flex-start;
+    padding-left: 13px;
+}
+
+button{
+    background-color: pink;
+    color: black;
+    border: none;
+    padding: 10px 2px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    margin: 10px;
+}
+button a{
+    text-decoration: none;
+    color: inherit;
+    
+}
+.Parametre1 {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    width: 100%;
+}
+
+.parametre {
+    padding: 8px 18px;
+    border-radius: 5px;
+    background-color: pink;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+    width: auto;
+}
+
+.content-columns {
+    display: flex;
+    gap: 0px; /* espace entre les colonnes */
+    justify-content: space-between;
+}
+
+.content-columns {
+    display: flex;
+    gap: 8px; /* espace entre les colonnes */
+    justify-content: space-between;
+}
+
+.posts-gallery {
+    flex:1 ;
+}
+
+.followers-list {
+    flex: 1;
+}
+
+i.fas, i.far, i.fa-solid {  /*pour cibler toutes les icônes Font Awesome */
+    color: #e75480;
+}
+
+.slider {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory; /* pour activer le défilement horizontal */
+    -webkit-overflow-scrolling: touch; /* pour un défilement fluide sur mobile */
+}
+
+.sliders-section {
+    flex: 0 0 100%; /* pour que chaque section prenne toute la largeur */
+    scroll-snap-align: start; /* pour aligner chaque section au début du conteneur */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    box-sizing: border-box; /* pour inclure le padding dans la largeur totale */
+}
+
+.item-content img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover; /* pour que l'image remplisse le conteneur sans déformation */
+    border-radius: 10px;
+}
+.slide-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px 0;
+}
+
+.indicator .active{
+    background-color: pink;
+}
