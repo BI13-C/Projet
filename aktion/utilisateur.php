@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include '../includes/db.php';
@@ -13,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Vérification des champs obligatoires
     if (empty($accountType) || empty($username) || ($accountType === 'vendeur' && empty($entite))) {
         echo "<p style='color:pink;'>❌ Merci de remplir tous les champs obligatoires.</p>";
-        } else {
+    } else {
         // Gestion du fichier image
         $uploadPath = null;
         if (isset($_FILES['profilePic']) && $_FILES['profilePic']['error'] === 0) {
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!$conn) {
             echo "<p style='color:red;'>Erreur de connexion à la base de données.</p>";
         } else {
-               // Vérifier si le nom d'utilisateur existe déjà
+            // Vérifier si le nom d'utilisateur existe déjà
             $checkSql = "SELECT COUNT(*) FROM user WHERE nom_utilisateur = ?";
             $checkStmt = mysqli_prepare($conn, $checkSql);
             mysqli_stmt_bind_param($checkStmt, "s", $username);
@@ -48,28 +49,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($count > 0) {
                 echo "<p style='color:pink;'>❌ Ce nom d'utilisateur est déjà pris.</p>";
             } else {
-            // Insertion dans la base
-            $sql = "INSERT INTO user (type_compte, nom_utilisateur, photo_profil, description, entite) 
-                    VALUES (?, ?, ?, ?, ?)";
-            $stmt = mysqli_prepare($conn, $sql);
+                // Insertion dans la base
+                $sql = "INSERT INTO user (type_compte, nom_utilisateur, photo_profil, description, entite) 
+                        VALUES (?, ?, ?, ?, ?)";
+                $stmt = mysqli_prepare($conn, $sql);
 
-            if (!$stmt) {
-                echo "<p style='color:red;'>Erreur de préparation de la requête : " . mysqli_error($conn) . "</p>";
-            } else {
-                mysqli_stmt_bind_param($stmt, "sssss", $accountType, $username, $uploadPath, $description, $entite);
-
-                if (mysqli_stmt_execute($stmt)) {
-                    echo "<p style='color:green;'>✅ Profil enregistré avec succès !</p>";
+                if (!$stmt) {
+                    echo "<p style='color:red;'>Erreur de préparation de la requête : " . mysqli_error($conn) . "</p>";
                 } else {
-                    echo "<p style='color:red;'>❌ Erreur : " . mysqli_stmt_error($stmt) . "</p>";
-                }
+                    mysqli_stmt_bind_param($stmt, "sssss", $accountType, $username, $uploadPath, $description, $entite);
 
-                mysqli_stmt_close($stmt);
+                    if (mysqli_stmt_execute($stmt)) {
+                        $id = $conn->insert_id;
+                        $_SESSION['user_id'] = $conn; // Stocker l'ID utilisateur dans la session
+                        header("Location: ../page/profil1.html");
+                        exit();
+                    } else {
+                        echo "<p style='color:red;'>❌ Erreur : " . mysqli_stmt_error($stmt) . "</p>";
+                    }
+
+                    mysqli_stmt_close($stmt);
+                }
             }
         }
     }
 }
-}
+
 ?>
-
-

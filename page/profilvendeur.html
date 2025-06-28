@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon profile</title>
+    <link rel="stylesheet" href="Css.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <!-- Bouton créer un post juste avant la liste des posts -->
+    <div class="top-actions">
+    <button class="addpost" title="Créer un post">
+        <i class="ri-add-line"></i>
+    </button>
+    <button class="message-btn" title="Envoyer un message">
+        <i class="ri-mail-line"></i>
+    </button>
+</div>
+
+    <div class="profile">
+        <div class="image" id="profileImage"></div>
+        <input type="file" id="imageInput" accept="image/*" style="display:none;"><br>
+        <div class="align">
+            <div class="pc"><h5>0<br></h5>posts</div>
+            <div class="fc"><h5>0<br></h5>followers</div>
+            <div class="fgc"><h5>0<br></h5>following</div>
+        </div>
+    </div>
+    <div class="bio">
+        <div class="biobody">
+            <p>Name<br>Lorem Ipsum dolor sit aemt, uiryfigfyqhgcyuytyegfdtrzvsueio
+            hdiijkkkkkkkkkkkkkkkkkkkkk.<br>
+            Lorem Ipsum dolor sit amet, consentevsbkeuzliq
+            dnjjoezoozooooooooo...more
+            </p>
+        </div>
+    </div>
+    <div class="settings">
+        <a href="utilisateur.html" class="editprofile">Edit profile</a>
+        <button class="shareprofile">Share profile</button>
+        <button class="addfriend" title="Add friend">
+            <i class="ri-user-add-line"></i>
+        </button>
+    </div>
+
+    
+    <div class="posts-list"></div>
+
+    <div class="bottom">
+        <a href="index.html" class="home"><i class="ri-home-4-fill" style="font-size:25px;"></i></a>
+        <button class="search"><i class="ri-search-line" style="font-size:25px;"></i></button>
+        <button class="avis"><i class="ri-chat-3-line" style="font-size:25px;"></i></button>
+    </div>
+
+    <div class="comments-modal" id="commentsModal" style="display:none;">
+    <div class="comments-content">
+        <h3>Commentaires reçus</h3>
+        <ul id="commentsList"></ul>
+        <button id="closeComments" style="margin-top:10px;">Fermer</button>
+    </div>
+</div>
+<div class="message-modal" id="messageModal" style="display:none;">
+    <div class="message-content">
+        <h3>Envoyer un message</h3>
+        <textarea id="messageInput" rows="4" style="width:100%;"></textarea>
+        <div style="margin-top:10px; text-align:right;">
+            <button id="sendMessage">Envoyer</button>
+            <button id="closeMessage">Fermer</button>
+        </div>
+    </div>
+</div>
+
+</div>
+<script>
+// Partage du profil
+document.querySelector('.shareprofile').addEventListener('click', function() {
+    if (navigator.share) {
+        navigator.share({
+            title: 'Mon profil',
+            text: 'Découvrez mon profil !',
+            url: window.location.href
+        }).catch(() => {});
+    } else {
+        alert("Le partage n'est pas supporté sur ce navigateur.");
+    }
+});
+
+// Suivi/désuivi
+const addFriendBtn = document.querySelector('.addfriend');
+const followersDiv = document.querySelector('.fc h5');
+let isFollowing = false;
+let followersCount = parseInt(followersDiv.textContent);
+
+function updateAddFriendUI() {
+    if (isFollowing) {
+        addFriendBtn.innerHTML = '<i class="ri-user-unfollow-line"></i>';
+        addFriendBtn.title = "Unfollow";
+        addFriendBtn.style.background = "#e74c3c";
+    } else {
+        addFriendBtn.innerHTML = '<i class="ri-user-add-line"></i>';
+        addFriendBtn.title = "Add friend";
+        addFriendBtn.style.background = "";
+    }
+}
+
+addFriendBtn.addEventListener('click', function() {
+    isFollowing = !isFollowing;
+    if (isFollowing) {
+        followersCount++;
+    } else {
+        followersCount--;
+    }
+    followersDiv.innerHTML = followersCount + "<br>";
+    updateAddFriendUI();
+});
+updateAddFriendUI();
+
+// Création de posts
+const addPostBtn = document.querySelector('.addpost');
+const postsDiv = document.querySelector('.posts-list');
+const postsCountDiv = document.querySelector('.pc h5');
+let postsCount = parseInt(postsCountDiv.textContent);
+
+addPostBtn.addEventListener('click', function() {
+    const postContent = prompt("Écris ton post :");
+    if (postContent && postContent.trim() !== "") {
+        const post = document.createElement('div');
+        post.className = "post";
+        post.textContent = postContent;
+        postsDiv.prepend(post);
+        postsCount++;
+        postsCountDiv.innerHTML = postsCount + "<br>";
+    }
+});
+
+// Photo de profil
+const imageDiv = document.getElementById('profileImage');
+const imageInput = document.getElementById('imageInput');
+imageDiv.addEventListener('click', () => {
+    imageInput.click();
+});
+imageInput.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            imageDiv.style.backgroundImage = `url('${e.target.result}')`;
+            imageDiv.style.backgroundSize = 'cover';
+            imageDiv.style.backgroundPosition = 'center';
+        };
+        reader.readAsDataURL(this.files[0]);
+    }
+});
+
+const messageBtn = document.querySelector('.message-btn');
+const messageModal = document.getElementById('messageModal');
+const closeMessage = document.getElementById('closeMessage');
+const sendMessage = document.getElementById('sendMessage');
+const messageInput = document.getElementById('messageInput');
+
+messageBtn.addEventListener('click', function() {
+    messageModal.style.display = "flex";
+    messageInput.value = "";
+    messageInput.focus();
+});
+
+closeMessage.addEventListener('click', function() {
+    messageModal.style.display = "none";
+});
+
+sendMessage.addEventListener('click', function() {
+    if (messageInput.value.trim() !== "") {
+        alert("Message envoyé : " + messageInput.value);
+        messageModal.style.display = "none";
+    } else {
+        alert("Veuillez écrire un message.");
+    }
+});
+
+// Fermer le modal si on clique en dehors du contenu
+messageModal.addEventListener('click', function(e) {
+    if (e.target === messageModal) {
+        messageModal.style.display = "none";
+    }
+});
+
+
+
+
+// Recherche
+document.querySelector('.search').addEventListener('click', function() {
+    const query = prompt("Que voulez-vous rechercher ?");
+    if (query && query.trim() !== "") {
+        alert("Vous avez recherché : " + query);
+    }
+});
+</script>
+</body>
+</html>

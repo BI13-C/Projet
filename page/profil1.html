@@ -1,0 +1,104 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="style6.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="profile-dropdown">
+    </div>
+    <div class="container">
+        <header class="profile-header">
+            <div class="profile-picture">
+                <img id="photo" src="path/to/profile-picture.jpg" alt="Profile Picture">
+            </div>
+            <div class="profile-main"><br><br>
+                <h1 id="nom" class="username">Username</h1><br><br><br><br>
+                <div class="stats">
+                    <span id="posts-count" class="posts">0 <br>Posts </span>
+                    <span id="followers" class="followers">0 <br>Followers</span>
+                    <span id="following" class="following">0 <br>Following</span>
+                </div><br>
+                <button><a href="utilisateur.html">Modifier le profil</a></button>
+            </div>
+        </header>
+        <p id="bio" class="bio">This is a short bio about the user.</p><br><br>
+        <div class="Ajouts">
+            <div class="content-columns">
+                <section class="posts-gallery">
+        <div class="slider-tabs">
+            <button class="tab-btn active" data-tab="posts"><i class="fas fa-th"></i></button>
+            <button class="tab-btn" data-tab="avis"><i class="fas fa-star"></i></button>
+        </div>
+        <div class="slider-content">
+            <div id="posts-tab" class="tab-content posts-tab active">
+                <div class="slider-section">
+                    <div class="item-content"><img src="" alt="Post 1"></div>
+                    <div class="item-content"><img src="" alt="Post 2"></div>
+                    <div class="item-content"><img src="" alt="Post 3"></div>
+                </div>
+                <div class="no-publication" style="display: none;">Aucune publication</div>
+            </div>
+            <div id="avis-tab" class="tab-content avis-tab">
+                <div class="slider-section">
+                    <div class="item-content"><img src="" alt="Avis 1"></div>
+                    <div class="item-content"><img src="" alt="Avis 2"></div>
+                    <div class="item-content"><img src="" alt="Avis 3"></div>
+                </div>
+                <div class="no-avis" style="display: none;">Aucun avis</div>
+            </div>
+        </div>
+<!-- ...existing code... -->
+<script>
+// Onglets
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        tabContents.forEach(tc => tc.classList.remove('active'));
+        document.querySelector('.' + btn.dataset.tab + '-tab').classList.add('active');
+    });
+});
+
+// Affichage "Aucune publication" ou "Aucun avis" si pas d'images valides
+document.querySelectorAll('.posts-tab, .avis-tab').forEach(tab => {
+    const sliderSection = tab.querySelector('.slider-section');
+    const items = sliderSection.querySelectorAll('img[src]:not([src=""])');
+    const noMsg = tab.querySelector('.no-publication') || tab.querySelector('.no-avis');
+    if (items.length === 0 && noMsg) {
+        noMsg.style.display = 'block';
+    } else if (noMsg) {
+        noMsg.style.display = 'none';
+    }
+});
+
+fetch("../aktion/profil.php")
+    .then(res => res.json())
+    .then(data => {
+        if (data.error){
+            alert("Erreur : " + data.error);
+            return;
+        }
+        document.getElementById("nom").innerText = data.nom || "Utilisateur";
+        document.getElementById("bio").innerText = data.bio || "Aucune bio renseignée.";
+        document.getElementById("photo").src = data.photo
+        ? "../uploads/" + data.photo
+        : "path/to/default-profile-picture.jpg"; // Chemin par défaut si pas de photo
+        document.getElementById("posts-count").innerHTML = (data.posts ?? 0) + " <br>Posts";
+        document.getElementById("followers").innerHTML = (data.followers ?? 0) + " <br>Followers";
+        document.getElementById("following").innerHTML = (data.following ?? 0) + " <br>Following";
+    })
+    .catch(err => {
+        console.error("Erreur reseau ou JSON :", err);
+    });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,357 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'roboto', sans-serif;
+}
+
+body {
+    background-color: papayawhip;
+}
+
+.container {
+    max-width: 450px;
+    margin: 40px auto;
+    border-radius: 40px;
+    padding: 20px 0 0 0;
+    min-height: 900px;
+    border: 3px solid pink;
+    background-color: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 18px pink;
+    text-align: center;
+    position: relative;
+}
+
+.profile {
+    width: 100%;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.image {
+    height: 100px;
+    width: 100px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    margin: 20px auto 10px auto;
+    border: 3px solid pink;
+    /* Ces lignes sont importantes pour l'image */
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.align {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+    gap: 28px;
+}
+
+.align h5 {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.bio {
+    width: 100%;
+    background: none;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.biobody {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.settings {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.settings button {
+    background: palevioletred;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.settings button:hover {
+    background: palevioletred;
+}
+
+.settings .addfriend {
+    padding: 8px 10px;
+    font-size: 18px;
+}
+
+.comments-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.comments-content {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px 18px;
+    min-width: 280px;
+    max-width: 90vw;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    text-align: left;
+}
+.comments-content h3 {
+    margin-bottom: 12px;
+}
+.comments-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.comments-content li {
+    background: #f3f3f3;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+
+.highlight {
+    width: 100%;
+    background: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 40px;
+    margin-bottom: 10px;
+}
+
+.prt {
+    width: 100%;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.grid, .tag {
+    width: 40px;
+    height: 40px;
+    background: pink;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.grid:hover, .tag:hover {
+    background: pink;
+}
+
+.bottom {
+    width: 100%;
+    background-color: palevioletred;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border-radius: 0 0 40px 40px;
+    padding: 10px 0;
+}
+
+.bottom button {
+    background: none;
+    border: none;
+    width: 33.33%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    color: rgb(190, 102, 102);;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.bottom button:hover {
+    color: pink;
+}
+
+.home, .search, .like {
+    /* Pour garder la structure, rien à ajouter ici */
+}
+
+.settings a.editprofile{
+    background: palevioletred;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.bottom a.home {
+    
+    color: rgb(190, 102, 102);
+    border: none;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-size: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+    width: 33.33%;
+    height: 40px;
+}
+
+.bottom a.home:hover {
+
+    color: pink;
+}
+
+.post-section {
+    width: 100%;
+    margin: 0 0 20px 0; /* Enlève le margin-top */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.addpost {
+    background: palevioletred;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: px;
+    transition: background 0.2s;
+    padding: 0;
+}
+
+.addpost:hover {
+    background: pink;
+}
+.message-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    cursor: pointer;
+}
+.message-content {
+    background: #fff;
+    border-radius: 0px;
+    padding: 24px 18px;
+    min-width: 280px;
+    max-width: 90vw;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    text-align: left;
+}
+.message-content h3 {
+    margin-bottom: 12px;
+}
+.message-content textarea {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 15px;
+    resize: vertical;
+}
+.message-content button {
+    background: palevioletred;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 14px;
+    margin-left: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.message-content button:hover {
+    background: #c94f7c;
+}
+
+.message-btn{
+    background: palevioletred;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    transition: background 0.2s;
+    padding: 0;
+}
+
+.top-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    padding: 0;
+}
+.addpost,
+.message-btn {
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+.message-btn {
+    margin-right: 5px;
+}
