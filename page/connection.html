@@ -9,24 +9,21 @@
 <body>
 
 <div class="container">
-    <form class="form2" method="post"  enctype="multipart/form-data" >
+    <form class="form2" action="../back_end/connexion.php" method="post"  enctype="multipart/form-data" >
     <img src="Logo.png" height="150" width="100">
 
     <h1>Connectez-Vous !</h1>
     <h2>Êtes-vous prêt à continuer l'aventure ?</h2>
 
     <label for="email"></label>
-    <input required id="email" type="text" placeholder="E-mail" >
+    <input required id="identifiant" type="text" name="identifiant" placeholder="Nom d'utilisateur ou Email" >
     <label for="mot-de-passe"></label>
-    <input required id="mot-de-passe" name="mot-de-passe" type="password" placeholder="Mot de passe" >
+    <input required id="mot-de-passe" name="mot_de_passe" type="password" placeholder="Mot de passe" ><br><br>
     
     
-    <label class="remember">
-        <input type="checkbox" id="remember-me" name="remember-me">
-        Se souvenir de moi
-    </label><br>
+    
 
-    <button type="submit" class="submit-button">Se connecter</button>
+    <button type="submit" class="submit-button">Se connecter</button><br><br>
 
 
 
@@ -36,7 +33,7 @@
             <span><a href="https://web.facebook.com/login.php/?_rdc=1&_rdr#" target="blank"> S'inscrire avec Facebook</a> </span>
             </button>
 
-            <button>Mot de Passe oublié ?</button>
+            
     </div>
 </div>
 

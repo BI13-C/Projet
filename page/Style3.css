@@ -120,6 +120,7 @@ h2{
     justify-content: center;
     gap: 30px;
     margin: 40px 0;
+    cursor: pointer;
 }
 
 .info-card {
@@ -133,6 +134,7 @@ h2{
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     transition: background 0.2s, color 0.2s, box-shadow 0.2s;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .info-card i {
@@ -144,6 +146,7 @@ h2{
 .info-card h3 {
     margin: 10px 0 8px 0;
     font-size: 1.3rem;
+    cursor: pointer;
 }
 
 .info-card p {
@@ -172,6 +175,9 @@ h5{
     font-size: 20px;
     margin-top: 20px;
 }
+
+
+
 .footer {
     text-align: center;
 }

@@ -9,18 +9,18 @@
 <body>
 
 <div class="container">
-    <form method="post"  enctype="multipart/form-data" class="form">
+    <form method="post" action="../back_end/inscription.php" enctype="multipart/form-data" class="form">
     <h1> Crée Ton Propre compte </h1>
     <p>Avec nous la recherche n'a jamais été aussi simple. Es-tu prêt ?</p>
 
     <label for="nom"></label> 
-    <input required id="nom" type="text" placeholder="Entrez Votre nom" > 
+    <input required id="nom" type="text" name="nom_utilisateur" placeholder="Entrez Votre nom d'utilisateur" > 
     <label for="email"></label>
-    <input required id="email" type="text" placeholder="Entrez votre email" >
+    <input required id="email" type="text" name="email" placeholder="Entrez votre email" >
     <label for="mot-de-passe"></label>
-    <input required id="mot-de-passe" type="text" type="password" placeholder="Mot de passe" >
+    <input required id="mot-de-passe" type="password" name="mot_de_passe" placeholder="Mot de passe" >
     <label for="confirm-mot-de-passe"></label>
-    <input required id="confirm-mot-de-passe" type="password" placeholder="Confirmer le mot de passe" ><br>
+    <input required id="confirm-mot-de-passe" type="password" name="mot-de-passe" placeholder="Confirmer le mot de passe" ><br>
     <button type="submit" class="submit-button">Commencez</button><br>
 
 
